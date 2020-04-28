@@ -6,23 +6,16 @@
 using System;
 using System.IO;
 
+// Patron Experto ya que el file printer es experto en imprimir a un archivo.
+// Cumple el principio SRP ya que tiene una unica responsabilidad y es imprimir.
+
 namespace Full_GRASP_And_SOLID.Library
 {
-    public enum Destination
+    public class FilePrinter : IPrinter
     {
-        Console,
-        File
-    }
-
-// Polimorfismo, ya que no se puede determinar el metodo, el mismo depende del objeto.
-
-    public class AllInOnePrinter
-    {
-        public void PrintRecipe(Recipe recipe, IPrinter printer)
+        public void Print (Recipe recipe)
         {
-
-            printer.Print(recipe);
-            
+            File.WriteAllText("Recipe.txt", recipe.GetTextToPrint());
         }
     }
 }

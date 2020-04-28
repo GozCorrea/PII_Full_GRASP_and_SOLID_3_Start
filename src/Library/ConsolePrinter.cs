@@ -6,23 +6,17 @@
 using System;
 using System.IO;
 
+// Experto ya que esta clase es la experta para imprimir por consola.
+// Cumple el principio SRP ya que tiene una unica responsabilidad y es imprimir.
+
 namespace Full_GRASP_And_SOLID.Library
 {
-    public enum Destination
+    public class ConosolePrinter : IPrinter
     {
-        Console,
-        File
-    }
-
-// Polimorfismo, ya que no se puede determinar el metodo, el mismo depende del objeto.
-
-    public class AllInOnePrinter
-    {
-        public void PrintRecipe(Recipe recipe, IPrinter printer)
+        public void Print (Recipe recipe)
         {
-
-            printer.Print(recipe);
-            
+            Console.WriteLine(recipe.GetTextToPrint());
         }
     }
 }
+
